@@ -8,23 +8,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:app_main/main.dart';
+import 'package:app_main/app/app.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('App launches successfully', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // 앱 제목이 표시되는지 확인
+    expect(find.text('Flutter 학습 앱'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // 하단 네비게이션 바에 항목들이 표시되는지 확인
+    expect(find.text('기본 위젯'), findsOneWidget);
+    expect(find.text('레이아웃'), findsOneWidget);
+    expect(find.text('상호작용'), findsOneWidget);
+    expect(find.text('핵심 기능'), findsOneWidget);
   });
 }
